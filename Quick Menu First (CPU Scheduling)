@@ -1,0 +1,48 @@
+#include<bits/stdc++.h> 
+#include <iostream>
+using namespace std;
+int main() 
+{
+	int size;
+	cin>>size;
+	int given[size][2];
+	for(int i=0;i<size;i++)
+	{
+		given[i][0]=i+1;
+		cin>>given[i][1];
+	}
+	for(int i=0;i<size;i++)
+	{
+		for(int j=0;j<size-i-1;j++)
+		{
+			if(given[j][1]>given[j+1][1])
+			{
+				int index=given[j][0], value=given[j][1];
+				given[j][0]=given[j+1][0]; given[j][1]=given[j+1][1];
+				given[j+1][0]=index; given[j+1][1]=value;
+			}
+		}
+	}
+  	int wait[size],ta[size];
+  	float avgw=0.0,avgta=0.0;
+	wait[0]=0;
+	for(int i=1;i<size;i++)
+	{
+		wait[i]=wait[i-1]+given[i-1][1];
+		avgw+=wait[i];
+	}
+  	for(int i=0;i<size;i++)
+    {
+		ta[i]=wait[i]+given[i][1];
+		avgta+=ta[i];
+    }
+  	for(int i=0;i<size;i++)
+    {
+     	cout<<"F"<<given[i][0]<<" "<<given[i][1]<<" "<<wait[i]<<" "<<ta[i]<<endl;
+	}
+	cout<<"Average Waiting Time:"<<fixed<<setprecision(6)<<(float)avgw/(float)size;
+  	cout<<"\nAverage Turnaround Time:"<<fixed<<setprecision(6)<<(float)avgta/(float)size; 
+	return 0;
+}
+
+//Code by hakerarenatutorials.wordpress.com
