@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+int main() 
+{
+	int size;
+  	cin>>size;
+  	int burst[size],wait[size],turna[size],ta=0,avg=0;
+  	turna[0]=0;
+  	for(int i=0;i<size;i++)
+    {
+      	cin>>burst[i];
+    }
+  	for(int i=1;i<=size;i++)
+    {
+    	turna[i]=turna[i-1]+burst[i-1];
+      	ta+=turna[i];
+    }
+  	wait[0]=0;
+  	for(int i=1;i<size;i++)
+    {
+    	wait[i]=wait[i-1]+burst[i-1];
+      	avg+=wait[i];
+    }
+  	cout<<"Average Waiting Time:"<<avg/size;
+  	cout<<"\nAverage Turnaround Time:"<<ta/size;
+	return 0;
+}
+//Code by hakerarenatutorials.wordpress.com
