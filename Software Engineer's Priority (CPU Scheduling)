@@ -1,0 +1,47 @@
+#include <iostream>
+#include<bits/stdc++.h> 
+using namespace std;
+int main() 
+{
+	int size;
+  	cin>>size;
+  	int bt[size][2],pid[size],wt[size],tat[size],avgta=0,avgw=0;
+  	for(int i=0;i<size;i++)
+    { 
+      	cin>>bt[i][1];
+      	bt[i][0]=i+1;
+    }
+    for(int i=0;i<size;i++)
+      	cin>>pid[i];
+  	for(int i=0;i<size;i++)
+	{
+		for(int j=0;j<size-i-1;j++)
+		{
+			if(pid[j]>pid[j+1])
+			{
+				int index=pid[j], value=bt[j][1], loc=bt[j][0];
+				pid[j]=pid[j+1]; bt[j][1]=bt[j+1][1]; bt[j][0]=bt[j+1][0];
+				pid[j+1]=index; bt[j+1][1]=value; bt[j+1][0]=loc;
+			}
+		}
+    }
+  	wt[0]=0;
+  	for(int i=1;i<size;i++)
+    {
+    	wt[i]=wt[i-1]+bt[i-1][1];
+      	avgw+=wt[i];
+    }
+  	for(int i=0;i<size;i++)
+    {
+		tat[i]=wt[i]+bt[i][1];
+		avgta+=tat[i];
+  	}
+  	cout<<"PID BT WT TAT\n";
+  	for(int i=0;i<size;i++)
+      	cout<<bt[i][0]<<" "<<bt[i][1]<<" "<<wt[i]<<" "<<tat[i]<<endl;
+ 	cout<<"Average Waiting Time:"<<avgw/size<<".000000";
+  	cout<<"\nAverage Turnaround Time:"<<avgta/size<<".000000"; 	
+  	return 0;
+}
+
+//Code by hakerarenatutorials.wordpress.com
