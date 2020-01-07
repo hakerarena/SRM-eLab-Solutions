@@ -1,0 +1,54 @@
+#include<bits/stdc++.h> 
+#include <iostream>
+using namespace std;
+int main() 
+{
+	int size;
+	cin>>size;
+	int given[size][2];
+	for(int i=0;i<size;i++)
+	{
+		given[i][0]=i+1;
+		cin>>given[i][1];
+	}
+	for(int i=0;i<size;i++)
+	{
+		for(int j=0;j<size-i-1;j++)
+		{
+			if(given[j][1]>given[j+1][1])
+			{
+				int index=given[j][0], value=given[j][1];
+				given[j][0]=given[j+1][0]; given[j][1]=given[j+1][1];
+				given[j+1][0]=index; given[j+1][1]=value;
+			}
+		}
+	}
+  	int wait[size],ta[size],avgw=0;
+  	float avgta=0.0;
+	wait[0]=0;
+	for(int i=1;i<size;i++)
+	{
+		wait[i]=wait[i-1]+given[i-1][1];
+		avgw+=wait[i];
+	}
+  	for(int i=0;i<size;i++)
+    {
+		ta[i]=wait[i]+given[i][1];
+		avgta+=ta[i];
+    }
+  	cout<<"Gnatt Chart for Waiting time=";
+  	for(int i=1;i<size;i++)
+      cout<<wait[i]<<" ";
+	cout<<"\nAverage WT="<<avgw/size<<endl;
+  	cout<<"Gnatt Chart for Turn Around Time=";
+  	for(int i=0;i<size;i++)
+      cout<<ta[i]<<" ";
+  	cout<<"\nAverage TAT="<<avgta<<endl; 
+  	for(int i=0;i<size;i++)
+    {
+     	cout<<"P"<<given[i][0]<<" "<<given[i][1]<<" "<<wait[i]<<" "<<ta[i]<<endl;
+	}
+	return 0;
+}
+
+//Code by hakerarenatutorials.wordpress.com
