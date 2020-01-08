@@ -1,0 +1,17 @@
+#include<iostream>
+using namespace std;
+int main() 
+{
+	string str;
+  	cin>>str;
+  	char l=str.at(0);
+  	int y=l-'0';
+  	while(y>0)
+    {  
+      	cout<<str.at(1); 
+      	--y; 
+    }
+  	return 0;
+}
+
+//Code by hakerarenatutorials.wordpress.com
