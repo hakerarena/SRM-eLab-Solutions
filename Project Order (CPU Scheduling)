@@ -1,0 +1,35 @@
+#include<bits/stdc++.h> 
+#include <iostream>
+using namespace std;
+int main() 
+{
+	int size;
+	cin>>size;
+	int given[size][2];
+	for(int i=0;i<size;i++)
+	{
+		given[i][0]=i+1;
+		cin>>given[i][1];
+	}
+  	int wait[size],ta[size];
+  	int avgw=0,avgta=0;
+	wait[0]=0;
+	for(int i=1;i<size;i++)
+	{
+		wait[i]=wait[i-1]+given[i-1][1];
+		avgw+=wait[i];
+	}
+  	for(int i=0;i<size;i++)
+    {
+		ta[i]=wait[i]+given[i][1];
+		avgta+=ta[i];
+    }
+  	cout<<"Pid BT WT TAT\n";
+  	for(int i=0;i<size;i++)
+     	cout<<"P["<<given[i][0]<<"] "<<given[i][1]<<" "<<wait[i]<<" "<<ta[i]<<endl;
+	cout<<"Average Waiting Time:"<<avgw/size;
+  	cout<<"\nAverage Turnaround Time:"<<avgta/size; 
+	return 0;
+}
+
+//Code by hakerarenatutorials.wordpress.com
