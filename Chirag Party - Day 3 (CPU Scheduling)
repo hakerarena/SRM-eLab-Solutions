@@ -1,0 +1,57 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main() 
+{
+	int size;
+  	cin>>size;
+  	string name[size];
+  	for(int i=0;i<size;i++)
+      	cin>>name[i];
+    int bt[size],at[size],pid[size];
+  	for(int i=0;i<size;i++)
+      	cin>>bt[i];
+  	for(int i=0;i<size;i++)
+      	cin>>at[i];
+  	for(int i=0;i<size;i++)
+      	cin>>pid[i];
+	for(int i=0;i<size;i++)
+	{
+		for(int j=0;j<size-i-1;j++)
+		{
+			if(pid[j]>pid[j+1])
+			{
+				string value=name[j]; int loc=bt[j]; int tmp=pid[j]; 
+				name[j]=name[j+1]; bt[j]=bt[j+1]; pid[j]=pid[j+1];
+				name[j+1]=value;  bt[j+1]=loc; pid[j+1]=tmp;
+			}
+		}
+    }
+	cout<<"Sorting Depend on Priority\n";
+	for(int i=0;i<size;i++)
+	{
+		cout<<name[i]<<" "<<bt[i]<<" "<<at[i]<<" "<<pid[i]<<endl;
+	}
+  	int wait[size],ta[size];
+  	float avgw=0.0,avgta=0.0;
+	wait[0]=0;
+  	cout<<"Waiting Time\n";
+	for(int i=1;i<size;i++)
+	{
+      	wait[i]=wait[i-1]+bt[i-1];
+		cout<<"Time Taken for "<<name[i-1]<<"="<<wait[i-1]<<endl;
+      	avgw+=wait[i];
+	}
+  	cout<<"Time Taken for "<<name[size-1]<<"="<<wait[size-1]<<endl;
+  	cout<<"Average Waiting Time="<<fixed<<setprecision(6)<<(float)avgw/(float)size<<endl;
+  	cout<<"TurnAround Time\n";
+  	for(int i=0;i<size;i++)
+    {
+		ta[i]=wait[i]+bt[i];
+		cout<<"Time Taken for "<<name[i]<<"="<<ta[i]<<endl;
+		avgta+=ta[i];
+    }
+	cout<<"Average TurnAround Time="<<fixed<<setprecision(6)<<(float)avgta/(float)size<<endl;
+  	return 0;
+}
+
+//Code by hakerarenatutorials.wordpress.com
