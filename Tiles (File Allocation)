@@ -1,0 +1,21 @@
+#include <stdio.h>
+int main() 
+{
+	int size,i,arr[100],find;
+  	scanf("%d",&size);
+  	for(i=0;i<size;i++)
+      scanf("%d",&arr[i]);
+  	scanf("%d",&find);
+  	printf("Sequential file\n");
+  	for(i=0;i<size;i++)
+    {
+    	if(find==arr[i])
+        {
+        	printf("%d found at location %d",find,i+1);
+          	break;
+		}
+    }
+  	return 0;
+}
+
+//Code by hakerarenatutorials.wordpress.com
