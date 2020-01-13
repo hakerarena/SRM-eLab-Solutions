@@ -1,0 +1,41 @@
+#include<iostream>
+#include<string.h>
+using namespace std;
+struct file{
+	string c;
+  	int	arr[100],len; 
+};
+int main()
+{
+	int size;
+  	cin>>size;
+  	file myfile[size];
+  	for(int i=0;i<size;i++)
+    {
+    	cin>>myfile[i].c;
+      	cin>>myfile[i].len;
+      	for(int j=0;j<myfile[i].len;j++)
+         	cin>>myfile[i].arr[j];
+    }
+  	string find;
+  	cin>>find;
+  	int flag=0;
+  	for(int i=0;i<size;i++)
+    {
+      	if(find.compare(myfile[i].c)==0)
+        {
+        	cout<<"Filename No.of blocks\n";
+          	cout<<myfile[i].c<<" "<<myfile[i].len<<" \n";
+          	cout<<"Blocks Occupied\n";
+          	for(int j=0;j<myfile[i].len-1;j++)
+             	cout<<myfile[i].arr[j]<<" ";
+          	cout<<myfile[i].arr[myfile[i].len-1];
+          	flag=1;
+            break;
+        }
+    }
+	if(flag==0)
+      cout<<"File Not Found";
+}
+
+//Code by hakerarenatutorials.wordpress.com
