@@ -1,0 +1,40 @@
+#include<stdio.h>
+int main()
+{
+      int fragments[10], block[10], file[10], m, n, number_of_blocks, number_of_files, temp, lowest = 10000;
+      static int block_arr[10], file_arr[10];
+      scanf("%d", &number_of_blocks);
+      scanf("%d", &number_of_files);
+      for(m = 0; m < number_of_blocks; m++) 
+            scanf("%d", &block[m]);
+      for(m = 0; m < number_of_files; m++) 
+            scanf("%d", &file[m]);
+      for(m = 0; m < number_of_files; m++)
+      {
+            for(n = 0; n < number_of_blocks; n++)
+            {
+                  if(block_arr[n] != 1)
+                  {
+                        temp = block[n] - file[m];
+                        if(temp >= 0)
+                        {
+                              if(lowest > temp)
+                              {
+                                    file_arr[m] = n;
+                                    lowest = temp;
+                              }
+                        }
+                  }
+                  fragments[m] = lowest;
+                  block_arr[file_arr[m]] = 1;
+                  lowest = 10000;
+            }
+      }
+      printf("\nFile Number File Size Block Number Block Size Fragment");
+      for(m = 0; m < number_of_files && file_arr[m] != 0; m++)
+            printf("\n%d %d %d %d %d", m, file[m], file_arr[m], block[file_arr[m]], fragments[m]);
+      printf("\n");
+      return 0;
+}
+
+//Code by hakerarenatutorials.wordpress.com
