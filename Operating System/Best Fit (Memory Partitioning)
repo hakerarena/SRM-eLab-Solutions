@@ -34,7 +34,7 @@ int main()
       for(m = 0; m < number_of_files && file_arr[m] != 0; m++)
             printf("\n%d %d %d %d %d", m, file[m], file_arr[m], block[file_arr[m]], fragments[m]);
       printf("\n");
-      return 0;
+      return ;
 }
 
 //Code by hakerarenatutorials.wordpress.com
