@@ -80,3 +80,5 @@ while(zt==0)
   cout<<"The processes are in unsafe sequence";
   return 0;
 }
+
+//Code by hakerarenatutorials.wordpress.com
