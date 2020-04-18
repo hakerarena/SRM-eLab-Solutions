@@ -1,0 +1,25 @@
+#include <iostream>
+#include <string.h>
+using namespace std;
+struct Files{
+	char dname[10],fname[100][100];
+	int fcnt;
+}dir; 
+int main() 
+{
+	 cin>>dir.dname;
+  	 int flag=0;
+  	 cin>>dir.fcnt;
+     for(int i=0;i<dir.fcnt;i++)
+     	cin>>dir.fname[i];
+  	char tmp[100]; 
+  	cin>>tmp;
+  	cout<<"The Files are";
+  	for(int i=0;i<dir.fcnt;i++)
+    {
+    	cout<<endl<<dir.fname[i]; 
+    }
+     return 0;
+}
+
+//Code by hakerarenatutorials.wordpress.com
