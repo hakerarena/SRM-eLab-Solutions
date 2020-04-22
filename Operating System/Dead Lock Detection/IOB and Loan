@@ -101,3 +101,5 @@ cout<<"Process Allocation Max Available\n";
   cout<<endl;
   return 0;
 }
+
+//Code by hakerarenatutorials.wordpress.com
